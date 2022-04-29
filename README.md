@@ -36,7 +36,7 @@ Hydra and Buildkite, using the `tbco-nix` library.
    address them. You can use the following commands to do that:
 
    ```
-   git grep -i 'iohk.\?skeleton'
+   git grep -i 'bcc.\?skeleton'
    nix-shell --run "lentil -T fixme ."
    ```
 
