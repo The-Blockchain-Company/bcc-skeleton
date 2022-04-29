@@ -1,4 +1,4 @@
-import           Cardano.Prelude
+import           Bcc.Prelude
 
 import           Criterion.Main
 import           Skeleton

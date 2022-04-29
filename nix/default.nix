@@ -6,10 +6,10 @@
 let
   sources = import ./sources.nix { inherit pkgs; }
     // sourcesOverride;
-  iohKNix = import sources.iohk-nix {};
+  iohKNix = import sources.tbco-nix {};
   haskellNix = import sources."haskell.nix";
   # use our own nixpkgs if it exist in our sources,
-  # otherwise use iohkNix default nixpkgs.
+  # otherwise use tbcoNix default nixpkgs.
   nixpkgs = sources.nixpkgs or
     (builtins.trace "Using IOHK default nixpkgs" iohKNix.nixpkgs);
 
@@ -19,21 +19,21 @@ let
     haskellNix.overlays
     # haskell-nix.haskellLib.extra: some useful extra utility functions for haskell.nix
     ++ iohKNix.overlays.haskell-nix-extra
-    # iohkNix: nix utilities and niv:
-    ++ iohKNix.overlays.iohkNix
+    # tbcoNix: nix utilities and niv:
+    ++ iohKNix.overlays.tbcoNix
     # our own overlays:
     ++ [
       (pkgs: _: with pkgs; {
 
-        # commonLib: mix pkgs.lib with iohk-nix utils and our own:
-        commonLib = lib // iohkNix
+        # commonLib: mix pkgs.lib with tbco-nix utils and our own:
+        commonLib = lib // tbcoNix
           // import ./util.nix { inherit haskell-nix; }
           # also expose our sources and overlays
           // { inherit overlays sources; };
 
-        # Example of using a package from iohk-nix
+        # Example of using a package from tbco-nix
         # TODO: Declare packages required by the build.
-        inherit (iohkNix.jormungandrLib.packages.release) jormungandr;
+        inherit (tbcoNix.jormungandrLib.packages.release) jormungandr;
       })
       # Our haskell-nix-ified cabal project:
       (import ./pkgs.nix)

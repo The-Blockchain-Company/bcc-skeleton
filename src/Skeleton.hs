@@ -1,6 +1,6 @@
 module Skeleton (message) where
 
-import           Cardano.Prelude
+import           Bcc.Prelude
 
 message :: Text
 message = "Hello, Haskell!"

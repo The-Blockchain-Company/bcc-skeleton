@@ -8,10 +8,10 @@
 , buildPackages
 # Pass in any extra programs necessary for the build as function arguments.
 # TODO: Declare packages required by the build.
-# jormungandr and cowsay are just examples and should be removed for your
+# quibitous and cowsay are just examples and should be removed for your
 # project, unless needed.
 , makeWrapper
-, jormungandr
+, quibitous
 , cowsay
 
 , config ? {}
@@ -23,7 +23,7 @@
 
 let
   # This creates the Haskell package set.
-  # https://input-output-hk.github.io/haskell.nix/user-guide/projects/
+  # https://the-blockchain-company.github.io/haskell.nix/user-guide/projects/
   pkgSet = haskell-nix.cabalProject  {
     src = haskell-nix.haskellLib.cleanGit { src = ../.; };
     ghc = buildPackages.haskell-nix.compiler.${compiler};
@@ -38,40 +38,40 @@ let
 
     modules = [
       {
-        packages.iohk-skeleton.configureFlags = [ "--ghc-option=-Werror" ];
+        packages.bcc-skeleton.configureFlags = [ "--ghc-option=-Werror" ];
         enableLibraryProfiling = profiling;
       }
 
       # Add dependencies
       {
-        packages.iohk-skeleton = {
-          components.tests.unit.build-tools = [ jormungandr ];
+        packages.bcc-skeleton = {
+          components.tests.unit.build-tools = [ quibitous ];
 
           # How to set environment variables for builds
           #preBuild = "export NETWORK=testnet";
 
           # How to add program depdendencies for benchmarks
           # TODO: remove if not applicable
-          components.benchmarks.iohk-skeleton-bench = {
+          components.benchmarks.bcc-skeleton-bench = {
             build-tools = [ makeWrapper ];
             postInstall = ''
               makeWrapper \
-                $out/bin/iohk-skeleton-bench \
-                $out/bin/iohk-skeleton-bench-wrapped \
+                $out/bin/bcc-skeleton-bench \
+                $out/bin/bcc-skeleton-bench-wrapped \
                 --prefix PATH : ${cowsay}/bin
             '';
           };
 
-          # fixme: Workaround for https://github.com/input-output-hk/haskell.nix/issues/207
+          # fixme: Workaround for https://github.com/the-blockchain-company/haskell.nix/issues/207
           components.all.postInstall = lib.mkForce "";
         };
       }
 
       # Misc. build fixes for dependencies
       {
-        # Cut down iohk-monitoring deps
+        # Cut down tbco-monitoring deps
         # Note that this reflects flags set in stack.yaml.
-        packages.iohk-monitoring.flags = {
+        packages.tbco-monitoring.flags = {
           disable-ekg = true;
           disable-examples = true;
           disable-graylog = true;
@@ -94,7 +94,7 @@ let
         packages.terminfo.package.identifier.name = "terminfo";
         packages.conduit.package.identifier.name = "conduit";
         packages.ekg.package.identifier.name = "ekg";
-        packages.iohk-monitoring.package.identifier.name = "iohk-monitoring";
+        packages.tbco-monitoring.package.identifier.name = "tbco-monitoring";
       }
 
       (lib.optionalAttrs stdenv.hostPlatform.isWindows {

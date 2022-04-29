@@ -4,7 +4,7 @@
 }:
 {
   example = stdenv.mkDerivation {
-    name = "iohk-skeleton-docs";
+    name = "bcc-skeleton-docs";
     buildInputs = [ (texlive.combine {
                       inherit (texlive)
                         scheme-small
@@ -33,7 +33,7 @@
     buildPhase = "make";
 
     meta = with lib; {
-      description = "IOHK Skeleton Example Document";
+      description = "BCC Skeleton Example Document";
       license = licenses.asl20;
       platforms = platforms.linux;
     };

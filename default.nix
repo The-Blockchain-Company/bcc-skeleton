@@ -1,5 +1,5 @@
 ############################################################################
-# iohk-skeleton Nix build
+# bcc-skeleton Nix build
 #
 # fixme: document top-level attributes and how to build them
 #
@@ -10,9 +10,9 @@
 # allows to cutomize ghc and profiling (see ./nix/haskell.nix):
 , config ? {}
 # allows to override dependencies of the project without modifications,
-# eg. to test build against local checkout of nixpkgs and iohk-nix:
-# nix build -f default.nix iohk-skeleton --arg sourcesOverride '{
-#   iohk-nix = ../iohk-nix;
+# eg. to test build against local checkout of nixpkgs and tbco-nix:
+# nix build -f default.nix bcc-skeleton --arg sourcesOverride '{
+#   tbco-nix = ../tbco-nix;
 #   nixpkgs  = ../nixpkgs;
 # }'
 , sourcesOverride ? {}
@@ -21,7 +21,7 @@
     inherit system crossSystem config sourcesOverride;
   }
 }:
-# commonLib include iohk-nix utilities, our util.nix and nixpkgs lib.
+# commonLib include tbco-nix utilities, our util.nix and nixpkgs lib.
 with pkgs; with commonLib;
 let
 
@@ -33,10 +33,10 @@ let
   self = {
     inherit haskellPackages check-hydra;
 
-    inherit (haskellPackages.iohk-skeleton.identifier) version;
+    inherit (haskellPackages.bcc-skeleton.identifier) version;
     # Grab the executable component of our package.
-    inherit (haskellPackages.iohk-skeleton.components.exes)
-      iohk-skeleton;
+    inherit (haskellPackages.bcc-skeleton.components.exes)
+      bcc-skeleton;
 
     # `tests` are the test suites which have been built.
     tests = collectComponents' "tests" haskellPackages;

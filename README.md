@@ -1,14 +1,14 @@
-# IOHK Skeleton Project
+# TBCO Skeleton Project
 
-[![Build status](https://badge.buildkite.com/e5b12d0fd507084fbdb1849da2de467f1de66b3e5c6d954554.svg)](https://buildkite.com/input-output-hk/iohk-nix)
+[![Build status](https://badge.buildkite.com/e5b12d0fd507084fbdb1849da2de467f1de66b3e5c6d954554.svg)](https://buildkite.com/the-blockchain-company/tbco-nix)
 
 This is an empty reference project which shows how to set up CI with
-Hydra and Buildkite, using the `iohk-nix` library.
+Hydra and Buildkite, using the `tbco-nix` library.
 
 
 ## Contents
 
- * `iohk-skeleton.cabal`, `stack.yaml`, `app/`, `bench/`, `src/`, `test/` — The example Haskell package.
+ * `bcc-skeleton.cabal`, `stack.yaml`, `app/`, `bench/`, `src/`, `test/` — The example Haskell package.
  * [`.buildkite/`](./buildkite/) — Buildkite pipeline definitions and related scripts.
  * [`.gitattributes`](./.gitattributes) — Metadata for GitHub so that it ignores auto-generated files in diffs.
  * [`default.nix`](./default.nix) — The main Nix build file.
@@ -26,12 +26,12 @@ Hydra and Buildkite, using the `iohk-nix` library.
    git init
    git commit --allow-empty -m "Initial commit"
    git add .
-   git commit -m "Copy iohk-skeleton"
+   git commit -m "Copy bcc-skeleton"
    ```
 
-2. Run `./nix/update-iohk-nix.sh` to update the iohk-nix pin.
+2. Run `./nix/update-tbco-nix.sh` to update the tbco-nix pin.
 
-3. Find all instances of `iohk-skeleton` or `iohkSkeleton` and replace
+3. Find all instances of `bcc-skeleton` or `bccSkeleton` and replace
    them with your project name. Find all instances of `TODO` and
    address them. You can use the following commands to do that:
 
@@ -42,7 +42,7 @@ Hydra and Buildkite, using the `iohk-nix` library.
 
 4. Some of the `TODO` comments will say "remove the line below and uncomment the
    next line." These are there just so that the `skeleton` project can be built
-   in CI within `iohk-nix`.
+   in CI within `tbco-nix`.
 
    The config files should also have example code and comments with
    instructions. Have a skim through these.
@@ -54,7 +54,7 @@ Hydra and Buildkite, using the `iohk-nix` library.
    the instructions in [`docs/start.md`](../docs/start.md).
 
 7. If something in this project needs to be improved, please
-   [open a PR](https://github.com/input-output-hk/iohk-nix/pulls).
+   [open a PR](https://github.com/the-blockchain-company/tbco-nix/pulls).
    If you have any other problems, ask in
    [#devops-crossteam-ci](https://app.slack.com/client/T0N639Z4N/CAP8NM7N0).
 
@@ -70,11 +70,11 @@ Hydra and Buildkite, using the `iohk-nix` library.
    This will build all attributes of `default.nix`.
 
 2. Test the Hydra jobset. You can't simply build everything, because some of
-   these jobs will be for other platforms. Replace `iohk-skeleton` with your
+   these jobs will be for other platforms. Replace `bcc-skeleton` with your
    project's name in this command:
 
    ```
-   nix-build release.nix -A native.iohk-skeleton.x86_64-linux
+   nix-build release.nix -A native.bcc-skeleton.x86_64-linux
    ```
 
 3. Test Buildkite. Unfortunately, there is no easy way to test a Buildkite
