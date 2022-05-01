@@ -9,7 +9,7 @@
         "sha256": "",
         "type": "tarball",
         "url": "https://github.com/the-blockchain-company/haskell.nix",
-        "url_template": "https://github.com/<owner>/<repo>/"
+        "url_template": "https://github.com/<owner>/<repo>"
     },
     "tbco-nix": {
         "branch": "master",
@@ -17,10 +17,8 @@
         "homepage": null,
         "owner": "the-blockchain-company",
         "repo": "tbco-nix",
-        "rev": "",
-        "sha256": "",
         "type": "tarball",
         "url": "https://github.com/the-blockchain-company/tbco-nix",
-        "url_template": "https://github.com/<owner>/<repo>/"
+        "url_template": "https://github.com/<owner>/<repo>"
     }
 }
