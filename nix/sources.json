@@ -6,7 +6,7 @@
         "owner": "the-blockchain-company",
         "repo": "haskell.nix",
         "rev": "d92e1ed14b400bb2b6e8ea1eedf0a20dd90ad878",
-        "sha256": "bd017f803dd5d867405903db6c900560e383e428257ee54ce1b7648a6cd5f41d",
+        "sha256": "1qcyybkvlx4dsxbk8r0138x6lpy6n62pdp2lix1v24w9657q5fmp",
         "type": "tarball",
         "url": "https://github.com/the-blockchain-company/haskell.nix/archive/d92e1ed14b400bb2b6e8ea1eedf0a20dd90ad878.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
@@ -18,7 +18,7 @@
         "owner": "the-blockchain-company",
         "repo": "tbco-nix",
         "rev": "2d6255cb1abc2cd2ee24f35bcfc714fedb7d878d",
-        "sha256": "b81b0eedfd104f6fe71a27cf43e68840af1fe398dd87ef986d997976ebbebbe6",
+        "sha256": "1mp6afa8ccjjq6fpj9wkmq0rq4v0p54dh8mmq5pg8iki3fz76ady",
         "type": "tarball",
         "url": "https://github.com/the-blockchain-company/tbco-nix/archive/2d6255cb1abc2cd2ee24f35bcfc714fedb7d878d.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>archive/<rev>.tar.gz"
