@@ -6,21 +6,21 @@
 let
   sources = import ./sources.nix { inherit pkgs; }
     // sourcesOverride;
-  iohKNix = import sources.tbco-nix {};
+  tbcoNix = import sources.tbco-nix {};
   haskellNix = import sources."haskell.nix";
   # use our own nixpkgs if it exist in our sources,
   # otherwise use tbcoNix default nixpkgs.
   nixpkgs = sources.nixpkgs or
-    (builtins.trace "Using IOHK default nixpkgs" iohKNix.nixpkgs);
+    (builtins.trace "Using TBCO default nixpkgs" tbcoNix.nixpkgs);
 
   # for inclusion in pkgs:
   overlays =
-    # Haskell.nix (https://github.com/input-output-hk/haskell.nix)
+    # Haskell.nix (https://github.com/the-blockchain-company/haskell.nix)
     haskellNix.overlays
     # haskell-nix.haskellLib.extra: some useful extra utility functions for haskell.nix
-    ++ iohKNix.overlays.haskell-nix-extra
+    ++ tbcoNix.overlays.haskell-nix-extra
     # tbcoNix: nix utilities and niv:
-    ++ iohKNix.overlays.tbcoNix
+    ++ tbcoNix.overlays.tbcoNix
     # our own overlays:
     ++ [
       (pkgs: _: with pkgs; {
@@ -33,7 +33,7 @@ let
 
         # Example of using a package from tbco-nix
         # TODO: Declare packages required by the build.
-        inherit (tbcoNix.jormungandrLib.packages.release) jormungandr;
+        inherit (tbcoNix.quibitousLib.packages.release) quibitous;
       })
       # Our haskell-nix-ified cabal project:
       (import ./pkgs.nix)
