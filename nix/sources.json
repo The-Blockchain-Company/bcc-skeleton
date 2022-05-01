@@ -17,8 +17,8 @@
         "homepage": null,
         "owner": "the-blockchain-company",
         "repo": "tbco-nix",
-        "rev": "d0ec35afaacefbbf08eb6fc1ce7dc0215c3de0a3",
-        "sha256": "0h7nyxwsllg0ww9h1ypka1p3w88shvjh91jpaqvdy85krwnj2b12",
+        "rev": null,
+        "sha256": null,
         "type": "tarball",
         "url": "https://github.com/the-blockchain-company/tbco-nix",
         "url_template": "https://github.com/<owner>/<repo>/"
