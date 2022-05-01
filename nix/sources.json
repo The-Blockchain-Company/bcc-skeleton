@@ -20,7 +20,7 @@
         "rev": "2d6255cb1abc2cd2ee24f35bcfc714fedb7d878d",
         "sha256": "b81b0eedfd104f6fe71a27cf43e68840af1fe398dd87ef986d997976ebbebbe6",
         "type": "tarball",
-        "url": "https://github.com/the-blockchain-company/tbco-nix/archive/d92e1ed14b400bb2b6e8ea1eedf0a20dd90ad878.tar.gz",
+        "url": "https://github.com/the-blockchain-company/tbco-nix/archive/2d6255cb1abc2cd2ee24f35bcfc714fedb7d878d.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>archive/<rev>.tar.gz"
     }
 }
