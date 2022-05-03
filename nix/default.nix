@@ -4,6 +4,7 @@
 , sourcesOverride ? {}
 }:
 let
+  compiler-nix-name = "ghc8104";
   sources = import ./sources.nix { inherit pkgs; }
     // sourcesOverride;
   tbcoNix = import sources.tbco-nix {};
