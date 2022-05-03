@@ -16,7 +16,7 @@
 #   nixpkgs  = ../nixpkgs;
 # }'
 , sourcesOverride ? {}
-# pinned version of nixpkgs augmented with iohk overlays.
+# pinned version of nixpkgs augmented with tbco overlays.
 , pkgs ? import ./nix {
     inherit system crossSystem config sourcesOverride;
   }

@@ -1,6 +1,6 @@
-## How to start with `iohk-nix`
+## How to start with `tbco-nix`
 
-This document is for developers who want to add use `iohk-nix` to add
+This document is for developers who want to add use `tbco-nix` to add
 Hydra and Buildkite CI to their projects.
 
 ## Using the skeleton project
@@ -24,10 +24,10 @@ information on how to set up the services.
    permissions to groups, not individual users. Make sure enough
    people have admin access.
 
-   As an example, for Cardano projects, grant `Write` access to the
-   [cardano-sl](https://github.com/orgs/input-output-hk/teams/cardano-sl)
+   As an example, for Bcc projects, grant `Write` access to the
+   [bcc-sl](https://github.com/orgs/The-Blockchain-Company/teams/bcc-sl)
    team, and `Admin` access to the
-   [cardano-sl-admin](https://github.com/orgs/input-output-hk/teams/cardano-sl-admin)
+   [bcc-sl-admin](https://github.com/orgs/The-Blockchain-Company/teams/bcc-sl-admin)
    team.
 
 
@@ -39,7 +39,7 @@ access, benchmarks, stack builds, or jobs which update a website.
 
 ![New Pipeline](./buildkite-new-pipeline.png)
 
-1. Create a [New Pipeline](https://buildkite.com/organizations/input-output-hk/pipelines/new)
+1. Create a [New Pipeline](https://buildkite.com/organizations/The-Blockchain-Company/pipelines/new)
    in Buildkite for the project repo.
 
 2. Add a single step from the template called "Read steps from repository".
@@ -67,7 +67,7 @@ how to set up CI scripts with all necessary dependencies available.
 Scheduled builds are good for QA processes which should be run regularly, but
 take too long to run on every git push.
 
-1. Create a [New Pipeline](https://buildkite.com/organizations/input-output-hk/pipelines/new)
+1. Create a [New Pipeline](https://buildkite.com/organizations/The-Blockchain-Company/pipelines/new)
    in Buildkite for the project repo. Call it "My Project Nightly" or something like that.
 
 2. Add a single step from the template called "Read steps from repository".
@@ -85,7 +85,7 @@ take too long to run on every git push.
 ## How to setup coveralls
 
 Add the desired repository in
-[`coveralls.io`](https://coveralls.io/github/input-output-hk/) (an account is
+[`coveralls.io`](https://coveralls.io/github/The-Blockchain-Company/) (an account is
 needed). After the repository is added, a token will be accessible in the
 `coveralls.io` settings page of your project. This token needs to be associated
 to an environment variable, e.g., `SKELETON_COVERALLS_REPO_TOKEN`, and the
@@ -100,9 +100,9 @@ can done.
 ## How to set up Hydra
 
 1. The list of Hydra jobsets are declared in the
-   [iohk-ops](https://github.com/input-output-hk/iohk-ops) repo. Open
+   [tbco-ops](https://github.com/The-Blockchain-Company/tbco-ops) repo. Open
    a PR with a change according to the instructions at the top of
-   [jobsets/default.nix](https://github.com/input-output-hk/iohk-ops/blob/master/jobsets/default.nix).
+   [jobsets/default.nix](https://github.com/The-Blockchain-Company/tbco-ops/blob/master/jobsets/default.nix).
 
 2. The jobset for this project is in [`release.nix`](../skeleton/release.nix). Add jobs to this
    file to build them with Hydra.
@@ -122,15 +122,15 @@ can done.
 ## How to set up Bors
 
 For general documenation about Bors, see
-[`iohk-nix/docs/bors.md`](../docs/bors.md).
+[`tbco-nix/docs/bors.md`](../docs/bors.md).
 
 1. Most of the settings for Bors are in [`bors.toml`](../skeleton/bors.toml).
 
 2. The settings for branches and permissions are found in the web
-   interface at https://bors-ng.aws.iohkdev.io/repositories .
+   interface at https://bors-ng.aws.tbcodev.io/repositories .
 
 3. There are full instructions for setting up Bors for a new repo in
-   [`iohk-ops/docs/bors.md`](https://github.com/input-output-hk/iohk-ops/blob/master/docs/bors.md).
+   [`tbco-ops/docs/bors.md`](https://github.com/The-Blockchain-Company/tbco-ops/blob/master/docs/bors.md).
 
 If Bors is not required, delete `bors.toml`. You can always put it
 back later.
@@ -140,8 +140,8 @@ back later.
 
 ### When not using the skeleton project
 
-Use `iohk-nix` by "pinning" its git revision and source hash in a JSON
-file. Then use iohk-nix to get nixpkgs. This is usually done with the
+Use `tbco-nix` by "pinning" its git revision and source hash in a JSON
+file. Then use tbco-nix to get nixpkgs. This is usually done with the
 default arguments to `default.nix`. For example:
 
 ```nix
@@ -159,7 +159,7 @@ default arguments to `default.nix`. For example:
 
 The `config` and `system` arguments above are needed when building for
 other systems. They have default values, and should be passed through
-to `iohk-nix`.
+to `tbco-nix`.
 
 Now set up `./nix/default.nix`, which is pure boilerplate:
 
@@ -170,21 +170,21 @@ Now set up `./nix/default.nix`, which is pure boilerplate:
 , sourcesOverride ? {}
 }:
 let
-  # use default stable nixpkgs from iohk-nix instead of our own:
+  # use default stable nixpkgs from tbco-nix instead of our own:
   sources = removeAttrs (import ./sources.nix) [ "nixpkgs" ] //
     sourcesOverride;
 
   # for inclusion in pkgs:
   nixpkgsOverlays = [
-    (_: _: { commonLib = lib // iohkNix; })
+    (_: _: { commonLib = lib // tbcoNix; })
   ];
 
-  # Import IOHK common nix lib, using our sources as override:
-  iohkNix = import sources.iohk-nix {
+  # Import TBCO common nix lib, using our sources as override:
+  tbcoNix = import sources.tbco-nix {
     inherit system crossSystem config nixpkgsOverlays;
     sourcesOverride = sources;
   };
-  pkgs = iohkNix.pkgs;
+  pkgs = tbcoNix.pkgs;
   lib = pkgs.lib;
 in
   pkgs
@@ -192,7 +192,7 @@ in
 
 Setup niv (nix dependencies manager) with
 ```
-nix-shell https://github.com/input-output-hk/iohk-nix/archive/master.tar.gz -A shell --run "niv init"
+nix-shell https://github.com/The-Blockchain-Company/tbco-nix/archive/master.tar.gz -A shell --run "niv init"
 ```
 
 And add a minimal `shell.nix`:

@@ -1,34 +1,34 @@
 # TODO: choose your stack package resolver
-# Many Cardano packages snapshot.yaml from cardano-prelude.
-resolver: https://raw.githubusercontent.com/input-output-hk/cardano-prelude/51a6c139f6d70515a99681b88fd90e5d2adb65b6/snapshot.yaml
+# Many Bcc packages snapshot.yaml from bcc-prelude.
+resolver: https://raw.githubusercontent.com/The-Blockchain-Company/bcc-prelude/c1f053a9dbc2763ad2163281a356a2cf0f4d7858/snapshot.yaml
 # resolver: 13.26
 
 packages:
   - .
 
 extra-deps:
-  - git: https://github.com/input-output-hk/cardano-prelude
-    commit: d673b92f2a2d9354d102514d0a0fa74f8248b14a
+  - git: https://github.com/The-Blockchain-Company/bcc-prelude
+    commit: c1f053a9dbc2763ad2163281a356a2cf0f4d7858
     subdirs:
       - .
       - test
 
-  - git: https://github.com/input-output-hk/cardano-base
-    commit: 6b808ad5506cb097cdf5832e1cd5cad0c83c58d6
+  - git: https://github.com/The-Blockchain-Company/bcc-base
+    commit: f6b3923ac0fb162098050f67dcbc31f6d721b22d
     subdirs:
       - binary
       - binary/test
 
-  - git: https://github.com/input-output-hk/iohk-monitoring-framework
-    commit: e2dc8b2160bb2ccd1ef9817a6498cda06ad36580
+  - git: https://github.com/The-Blockchain-Company/tbco-monitoring-framework
+    commit: 2493b1104caa6d32378d0cb72d3fa92916b5570b
     subdirs:
       - contra-tracer
-      - iohk-monitoring
+      - tbco-monitoring
 
 flags:
-  # Bring in less dependencies from iohk-monitoring
+  # Bring in less dependencies from tbco-monitoring
   # See also: package options in nix/default.nix
-  iohk-monitoring:
+  tbco-monitoring:
     disable-ekg: true
     disable-examples: true
     disable-graylog: true

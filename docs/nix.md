@@ -1,9 +1,9 @@
-# Using Nix with Cardano SL
+# Using Nix with Bcc SL
 
-We use Nix for building and deploying Cardano SL. It provides fully
+We use Nix for building and deploying Bcc SL. It provides fully
 deterministic and cached builds of our software and all dependencies,
 and permits fully declarative configuration of the infrastructure
-running the Cardano SL network.
+running the Bcc SL network.
 
 ## Installing
 
@@ -18,19 +18,19 @@ install Nix in multi user mode:
 Full instructions are in the
 [Nix Manual](https://nixos.org/nix/manual/#ch-installing-binary).
 
-## Binary cache
+## Binary cache #TODO - Binary Cache
 
-Configuring the IOHK binary cache is essential for developing with
-Cardano SL. If you do not have the binary cache set up correctly, Nix
+Configuring the TBCO binary cache is essential for developing with
+Bcc SL. If you do not have the binary cache set up correctly, Nix
 will download source tarballs and proceed to build an entire system
 from scratch.
 
 Add the following lines to `/etc/nix/nix.conf`. If the file does not
 exist, then create it.
 
-    substituters         = https://hydra.iohk.io https://cache.nixos.org
+    substituters         = https://hydra.quantumone.network https://cache.nixos.org
     trusted-substituters =
-    trusted-public-keys  = hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=
+    trusted-public-keys  = hydra.quantumone.network:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=
 
 The `nix-daemon` must be restarted after editing `/etc/nix/nix.conf`
 for changes to take effect. Run `systemctl restart nix-daemon` on Linux
@@ -40,7 +40,7 @@ org.nixos.nix-daemon` on macOS.
 We do not recommend using `~/.config/nix/nix.conf` unless you are a
 power user. It's simpler to have only one global config file.
 
-If using NixOS, see [`iohk-binary-cache.nix`](./iohk-binary-cache.nix).
+If using NixOS, see [`tbco-binary-cache.nix`](./tbco-binary-cache.nix).
 
 ## Using command-line options
 
@@ -49,9 +49,9 @@ Rather than configuring the binary caches, they can be given as options to
 
 ```sh
 $ nix-build \
-  --option substituters "https://hydra.iohk.io https://cache.nixos.org" \
+  --option substituters "https://hydra.quantumone.network https://cache.nixos.org" \
   --option trusted-substituters "" \
-  --option trusted-public-keys "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=" \
+  --option trusted-public-keys "hydra.quantumone.network:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=" \
   default.nix
 ```
 
@@ -98,17 +98,17 @@ are worth a read if you are interested.
 ### I'm not getting cached builds!
 
 If you have the develop/release/master branch checked out, and no
-local changes, all builds should be downloaded from the IOHK binary
+local changes, all builds should be downloaded from the TBCO binary
 cache and nothing built locally.
 
-1. Check that the IOHK binary cache is set up correctly.
+1. Check that the TBCO binary cache is set up correctly.
 
    You can tell if the cache works by finding an output store path on
-   [a Hydra build](https://hydra.iohk.io/job/serokell/cardano-sl/cardano-sl.x86_64-linux/latest#tabs-details),
+   [a Hydra build](https://hydra.quantumone.network/job/serokell/bcc-sl/bcc-sl.x86_64-linux/latest#tabs-details),
    and then running `nix-store --realize PATH`. For example:
 
    ```
-   nix-store --realize /nix/store/ivapcjym0ar5mdx3jyf1p6d3m2zzmajn-cardano-sl-1.3.0
+   nix-store --realize /nix/store/ivapcjym0ar5mdx3jyf1p6d3m2zzmajn-bcc-sl-1.3.0
    ```
 
    If this doesn't work, review your settings with:
@@ -139,20 +139,20 @@ Nix installation.
 We pin versions to exact revisions and put these revisions, and their
 SHA-256 hash into little json files. To recalculate the hash, use
 `nix-prefetch-git` according to
-[this procedure](https://github.com/input-output-hk/internal-documentation/wiki/Daedalus#q-how-to-change-cardano-sl-version-for-daedalus).
+[this procedure](https://github.com/The-Blockchain-Company/internal-documentation/wiki/Klarity#q-how-to-change-bcc-sl-version-for-klarity).
 
 ### Building `release.nix`
 
 When building attributes from `release.nix`, don't forget to specify
 the arch like this:
 
-    nix-build release.nix -A cardano-wallet.x86_64-linux
+    nix-build release.nix -A bcc-wallet.x86_64-linux
 
 If you don't specify the arch, it will build for both `x86_64-darwin`
 and `x86_64-linux`. Unless you have a macos build slave configured,
 this will fail with:
 
-    checking for references to /tmp/nix-build-cardano-sl-util-1.2.0.drv-0 in /nix/store/8ncrzv05fbkb95l1n2l0mkiv94i23qb0-cardano-sl-util-1.2.0...
+    checking for references to /tmp/nix-build-bcc-sl-util-1.2.0.drv-0 in /nix/store/8ncrzv05fbkb95l1n2l0mkiv94i23qb0-bcc-sl-util-1.2.0...
     error: a 'x86_64-darwin' is required to build '/nix/store/ncma07cbrlh344s28jrmk3r1n9c3rxxx-remove-references-to.drv', but I am a 'x86_64-linux'
 
 ### stack2nix Hackage Snapshots
@@ -163,7 +163,7 @@ and then `stack2nix` fails with something like:
     user error (No such package formatting-6.3.6 in the cabal database. Did you run cabal update?)
 
 Then it probably means that the Hackage snapshot is too old. Update
-[`pkgs/generate.sh`](https://github.com/input-output-hk/cardano-sl/blob/develop/pkgs/generate.sh).
+[`pkgs/generate.sh`](https://github.com/The-Blockchain-Company/bcc-sl/blob/develop/pkgs/generate.sh).
 
 ### Upgrading to Nix 2
 
@@ -221,7 +221,7 @@ A nix channel will be added for the latest stable nixpkgs release (see
 
 To build any branch straight from a GitHub tarball:
 
-    nix-build https://github.com/input-output-hk/cardano-sl/archive/develop.tar.gz -A cardano-wallet
+    nix-build https://github.com/The-Blockchain-Company/bcc-sl/archive/develop.tar.gz -A bcc-wallet
 
 
 ## Links

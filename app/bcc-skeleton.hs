@@ -1,4 +1,4 @@
-import           Cardano.Prelude
+import           Bcc.Prelude
 import           Skeleton
 
 main :: IO ()

@@ -7,7 +7,7 @@ let
   sources = import ./sources.nix { inherit pkgs; }
     // sourcesOverride;
   tbcoNix = import sources.tbco-nix {};
-  haskellNix = import sources."haskell.nix";
+  haskellNix = import sources."haskell.nix"{};
   # use our own nixpkgs if it exist in our sources,
   # otherwise use tbcoNix default nixpkgs.
   nixpkgs = sources.nixpkgs or

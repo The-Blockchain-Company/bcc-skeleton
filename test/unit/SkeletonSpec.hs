@@ -1,6 +1,6 @@
 module SkeletonSpec (spec) where
 
-import           Cardano.Prelude
+import           Bcc.Prelude
 import qualified Data.Text       as T
 import           Skeleton
 import           Test.Hspec

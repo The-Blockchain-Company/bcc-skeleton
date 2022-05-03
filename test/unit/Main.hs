@@ -1,4 +1,4 @@
-import           Cardano.Prelude
+import           Bcc.Prelude
 import qualified SkeletonSpec    as Skeleton
 import           Test.Hspec
 

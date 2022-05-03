@@ -30,13 +30,13 @@ so.
 ## Who can merge
 
 Anyone with push access to the GitHub repository can send commands to
-`iohk-bors`.
+`tbco-bors`.
 
 ## Hosting
 
-IOHK host our own Bors bot called `iohk-bors`.
+TBCO host our own Bors bot called `tbco-bors`.
 
-The web interface is at https://bors-ng.aws.iohkdev.io/. Generally,
+The web interface is at https://bors-ng.aws.tbcodev.io/. Generally,
 you don't need the web interface to merge PRs.
 
 If using the web interface, ensure that you are using ours, rather
@@ -47,7 +47,7 @@ than the one hosted by the Bors developers at https://app.bors.tech/.
 Most of the settings for Bors are in [`bors.toml`](./../../bors.toml).
 
 The settings for branches and permissions are found in the web
-interface at https://bors-ng.aws.iohkdev.io/repositories .
+interface at https://bors-ng.aws.tbcodev.io/repositories .
 
 There are full instructions for setting up Bors for a new repo in
-[`iohk-ops/docs/bors.md`](https://github.com/input-output-hk/iohk-ops/blob/master/docs/bors.md).
+[`tbco-ops/docs/bors.md`](https://github.com/The-Blockchain-Company/tbco-ops/blob/master/docs/bors.md).

@@ -9,7 +9,7 @@ package bcc-skeleton
 source-repository-package
   type: git
   location: https://github.com/the-blockchain-company/bcc-prelude
-  tag:
+  tag: c1f053a9dbc2763ad2163281a356a2cf0f4d7858
 
 
 constraints:
