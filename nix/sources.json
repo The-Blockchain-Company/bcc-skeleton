@@ -18,7 +18,7 @@
         "owner": "the-blockchain-company",
         "repo": "tbco-nix",
         "rev": "7d036800747889eb91399f2711d751f45dc59f19",
-        "sha256": "1nbcwg0cpq28myfdw62a5hq2sbc5k60fsyjxilskfil09k6qvdh1",
+        "sha256": "13vdgii9r11hci96wwr9niyxz7lg62l19288f7m7ibq11g0imynh",
         "type": "tarball",
         "url": "https://github.com/the-blockchain-company/tbco-nix/archive/7d036800747889eb91399f2711d751f45dc59f19.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>archive/<rev>.tar.gz"
