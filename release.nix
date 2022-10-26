@@ -56,6 +56,15 @@ let
       collectTests jobs.native.benchmarks ++
       # TODO: Add your project executables to this list
       [ jobs.native.bcc-skeleton.x86_64-linux
+        jobs.native.bcc-base.x86_64-linux
+        jobs.native.bcc-crypto.x86_64-linux
+        jobs.native.bcc-prelude.x86_64-linux
+        jobs.native.bcc-ledger-specs.x86_64-linux
+        jobs.native.bcc-node.x86_64-linux
+        jobs.native.zerepoch.x86_64-linux
+        jobs.native.Win32-network.x86_64-linux
+        jobs.native.shepards.x86_64-linux
+        jobs.native.tbco-monitoring-framework.x86_64-linux        
       ]
     ))
   # Build the shell derivation in Hydra so that all its dependencies

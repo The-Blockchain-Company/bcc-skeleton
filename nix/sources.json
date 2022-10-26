@@ -5,10 +5,10 @@
         "homepage": "https://the-blockchain-company.github.io/haskell.nix",
         "owner": "the-blockchain-company",
         "repo": "haskell.nix",
-        "rev": "d92e1ed14b400bb2b6e8ea1eedf0a20dd90ad878",
-        "sha256": "1qcyybkvlx4dsxbk8r0138x6lpy6n62pdp2lix1v24w9657q5fmp",
+        "rev": "f081078fb528e568089324c663358d57a834a0ca",
+        "sha256": "1f56xbw4hw49hc6d6cna5mfnkcs4l84ljfihgb40cagvcng46p0c",
         "type": "tarball",
-        "url": "https://github.com/the-blockchain-company/haskell.nix/archive/d92e1ed14b400bb2b6e8ea1eedf0a20dd90ad878.tar.gz",
+        "url": "https://github.com/the-blockchain-company/haskell.nix/archive/f081078fb528e568089324c663358d57a834a0ca.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "tbco-nix": {
@@ -17,10 +17,10 @@
         "homepage": null,
         "owner": "the-blockchain-company",
         "repo": "tbco-nix",
-        "rev": "9c5d2e55dceb9b5178343d7dba360709cd9a2018",
-        "sha256": "1gf466zfamzj01j83knzxp7rvy6spndvwvk33qazisjcx3hkswhj",
+        "rev": "7d036800747889eb91399f2711d751f45dc59f19",
+        "sha256": "1nbcwg0cpq28myfdw62a5hq2sbc5k60fsyjxilskfil09k6qvdh1",
         "type": "tarball",
-        "url": "https://github.com/the-blockchain-company/tbco-nix/archive/9c5d2e55dceb9b5178343d7dba360709cd9a2018.tar.gz",
+        "url": "https://github.com/the-blockchain-company/tbco-nix/archive/7d036800747889eb91399f2711d751f45dc59f19.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>archive/<rev>.tar.gz"
     }
 }

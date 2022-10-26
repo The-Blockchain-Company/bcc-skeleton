@@ -55,6 +55,8 @@ access, benchmarks, stack builds, or jobs which update a website.
     - Cancel Intermediate Builds
 
 5. Grab the Build Badge link and put it in this file.
+    https://badge.buildkite.com/9897c32a90c9b4d509f1fb1a08084a6a568e54e047fa58f22c.svg
+    Adding a branch param will scope it to a particular branch (e.g. ?branch=main)
 
 6. The pipeline definition is in [`.buildkite/pipeline.yml`](../skeleton/.buildkite/pipeline.yml).
    There is [documentation](https://buildkite.com/docs/pipelines) for this.

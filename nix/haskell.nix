@@ -13,10 +13,9 @@
 , makeWrapper
 , quibitous
 , cowsay
-
 , config ? {}
 # GHC attribute name
-, compiler ? config.haskellNix.compiler or "ghc865"
+, compiler ? config.tbcoNix.compiler or "ghc8107"
 # Enable profiling
 , profiling ? config.haskellNix.profiling or false
 }:
