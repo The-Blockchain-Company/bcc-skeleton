@@ -17,10 +17,10 @@
         "homepage": null,
         "owner": "the-blockchain-company",
         "repo": "tbco-nix",
-        "rev": "7d036800747889eb91399f2711d751f45dc59f19",
-        "sha256": "13vdgii9r11hci96wwr9niyxz7lg62l19288f7m7ibq11g0imynh",
+        "rev": "1a88070425e027bf2ede59d5b1ee81b3b6354a0a",
+        "sha256": "sha256:1j8nm3vz5a932pyhx3mfcbiqf47n3wbig6mbfjhgpgiz9jz30lg9",
         "type": "tarball",
-        "url": "https://github.com/the-blockchain-company/tbco-nix/archive/7d036800747889eb91399f2711d751f45dc59f19.tar.gz",
+        "url": "https://github.com/the-blockchain-company/tbco-nix/archive/1a88070425e027bf2ede59d5b1ee81b3b6354a0a.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>archive/<rev>.tar.gz"
     }
 }
