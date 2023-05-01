@@ -1,2 +1,2 @@
-Section	bcc-skeleton.tex	/^\\section{Section}$/;"	s
-DOCNAME	Makefile	/^DOCNAME = bcc-skeleton$/;"	m
+Section	Bcc.tex	/^\\section{Section}$/;"	s
+DOCNAME	Makefile	/^DOCNAME = Bcc$/;"	m

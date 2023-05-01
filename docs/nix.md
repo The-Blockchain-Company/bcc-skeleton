@@ -30,7 +30,7 @@ exist, then create it.
 
     substituters         = https://hydra.quantumone.network https://cache.nixos.org
     trusted-substituters =
-    trusted-public-keys  = hydra.quantumone.network:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=
+    trusted-public-keys  = hydra.quantumone.network:, tbco.cachix.org-1:OYKDS3zfcsf4WEVuSTV+XmgaIn1GeclGW0kSFd3G0NU=
 
 The `nix-daemon` must be restarted after editing `/etc/nix/nix.conf`
 for changes to take effect. Run `systemctl restart nix-daemon` on Linux

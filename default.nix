@@ -1,5 +1,5 @@
 ############################################################################
-# bcc-skeleton Nix build
+# Bcc Nix build
 #
 # fixme: document top-level attributes and how to build them
 #
@@ -11,7 +11,7 @@
 , config ? {}
 # allows to override dependencies of the project without modifications,
 # eg. to test build against local checkout of nixpkgs and tbco-nix:
-# nix build -f default.nix bcc-skeleton --arg sourcesOverride '{
+# nix build -f default.nix Bcc --arg sourcesOverride '{
 #   tbco-nix = ../tbco-nix;
 #   nixpkgs  = ../nixpkgs;
 # }'
@@ -33,10 +33,10 @@ let
   self = {
     inherit haskellPackages check-hydra;
 
-    inherit (haskellPackages.bcc-skeleton.identifier) version;
+    inherit (haskellPackages.Bcc.identifier) version;
     # Grab the executable component of our package.
-    inherit (haskellPackages.bcc-skeleton.components.exes)
-      bcc-skeleton;
+    inherit (haskellPackages.Bcc.components.exes)
+      Bcc;
 
     # `tests` are the test suites which have been built.
     tests = collectComponents' "tests" haskellPackages;

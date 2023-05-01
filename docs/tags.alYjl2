@@ -1,0 +1,2 @@
+Section	bcc.tex	/^\\section{Section}$/;"	s
+DOCNAME	Makefile	/^DOCNAME = Bcc$/;"	m

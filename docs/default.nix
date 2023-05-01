@@ -4,7 +4,7 @@
 }:
 {
   example = stdenv.mkDerivation {
-    name = "bcc-skeleton-docs";
+    name = "bcc-docs";
     buildInputs = [ (texlive.combine {
                       inherit (texlive)
                         scheme-small

@@ -37,13 +37,13 @@ let
 
     modules = [
       {
-        packages.bcc-skeleton.configureFlags = [ "--ghc-option=-Werror" ];
+        packages.Bcc.configureFlags = [ "--ghc-option=-Werror" ];
         enableLibraryProfiling = profiling;
       }
 
       # Add dependencies
       {
-        packages.bcc-skeleton = {
+        packages.Bcc = {
           components.tests.unit.build-tools = [ quibitous ];
 
           # How to set environment variables for builds
@@ -51,12 +51,12 @@ let
 
           # How to add program depdendencies for benchmarks
           # TODO: remove if not applicable
-          components.benchmarks.bcc-skeleton-bench = {
+          components.benchmarks.Bcc-bench = {
             build-tools = [ makeWrapper ];
             postInstall = ''
               makeWrapper \
-                $out/bin/bcc-skeleton-bench \
-                $out/bin/bcc-skeleton-bench-wrapped \
+                $out/bin/Bcc-bench \
+                $out/bin/Bcc-bench-wrapped \
                 --prefix PATH : ${cowsay}/bin
             '';
           };

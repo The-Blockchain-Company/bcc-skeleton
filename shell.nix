@@ -17,7 +17,7 @@ let
     # If shellFor local packages selection is wrong,
     # then list all local packages then include source-repository-package that cabal complains about:
     #packages = ps: with ps; [
-    #  bcc-skeleton
+    #  Bcc
     #  bcc-prelude
     #];
 

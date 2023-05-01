@@ -8,7 +8,7 @@
 ############################################################################
 
 # The project sources
-{ bcc-skeleton ? { outPath = ./.; rev = "abcdef"; }
+{ Bcc ? { outPath = ./.; rev = "abcdef"; }
 
 # Function arguments to pass to the project
 , projectArgs ? {
@@ -36,8 +36,8 @@ with (import pkgs.commonLib.release-lib) {
   inherit pkgs;
 
   inherit supportedSystems supportedCrossSystems scrubJobs projectArgs;
-  packageSet = import bcc-skeleton;
-  gitrev = bcc-skeleton.rev;
+  packageSet = import Bcc;
+  gitrev = Bcc.rev;
 };
 
 with pkgs.lib;
@@ -55,7 +55,7 @@ let
       collectTests jobs.native.checks.tests ++
       collectTests jobs.native.benchmarks ++
       # TODO: Add your project executables to this list
-      [ jobs.native.bcc-skeleton.x86_64-linux
+      [ jobs.native.Bcc.x86_64-linux
         jobs.native.bcc-base.x86_64-linux
         jobs.native.bcc-crypto.x86_64-linux
         jobs.native.bcc-prelude.x86_64-linux

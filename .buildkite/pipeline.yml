@@ -6,15 +6,14 @@
 # TODO: remove all the "cd skeleton" lines
 
 env:
-  BUILD_DIR: "/build/tbco-skeleton"
-  STACK_ROOT: "/build/tbco-skeleton.stack"
-  CACHE_DIR: "/cache/tbco-skeleton"
+  BUILD_DIR: "/build/bcc"
+  STACK_ROOT: "/build/bcc.stack"
+  CACHE_DIR: "/cache/bcc"
 
 steps:
   # TODO: Remove this and define your own build steps.
   - label: Lint the fuzz
     commands:
-      - 'cd skeleton && nix-shell -p haskellPackages.niv --run "niv update tbco-nix -b $BUILDKITE_BRANCH"'  # TODO: remove this line
       - "nix-build -A checks.lint-fuzz -o check-lint-fuzz.sh"
       - "./check-lint-fuzz.sh"
     agents:
@@ -22,7 +21,6 @@ steps:
 
   - label: Check repo dependency tags are present on master branches
     commands:
-      - 'cd skeleton && nix-shell -p haskellPackages.niv --run "niv update tbco-nix -b $BUILDKITE_BRANCH"'  # TODO: remove this line
       - "nix build -f ./nix tbcoNix.checkRepoTagsOnMasterBranches --arg src ./. --show-trace"
     agents:
       system: x86_64-linux
@@ -30,7 +28,6 @@ steps:
   # Imperative build steps
   - label: Stack build
     commands:
-      - 'cd skeleton && nix-shell -p haskellPackages.niv --run "niv update tbco-nix -b $BUILDKITE_BRANCH"'  # TODO: remove this line
       - "nix-build .buildkite/default.nix -o sr"
       - "./sr/bin/rebuild --build-dir=$BUILD_DIR --cache-dir=$CACHE_DIR"
     agents:
@@ -38,4 +35,4 @@ steps:
     timeout_in_minutes: 60
     branches: master
     artifact_paths:
-      - "/build/tbco-skeleton/.stack-work/logs/tbco-skeleton*.log"
+      - "/build/bcc/.stack-work/logs/bcc*.log"

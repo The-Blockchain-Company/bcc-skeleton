@@ -8,7 +8,7 @@ Hydra and Buildkite, using the `tbco-nix` library.
 
 ## Contents
 
- * `bcc-skeleton.cabal`, `stack.yaml`, `app/`, `bench/`, `src/`, `test/` — The example Haskell package.
+ * `Bcc.cabal`, `stack.yaml`, `app/`, `bench/`, `src/`, `test/` — The example Haskell package.
  * [`.buildkite/`](./buildkite/) — Buildkite pipeline definitions and related scripts.
  * [`.gitattributes`](./.gitattributes) — Metadata for GitHub so that it ignores auto-generated files in diffs.
  * [`default.nix`](./default.nix) — The main Nix build file.
@@ -26,12 +26,12 @@ Hydra and Buildkite, using the `tbco-nix` library.
    git init
    git commit --allow-empty -m "Initial commit"
    git add .
-   git commit -m "Copy bcc-skeleton"
+   git commit -m "Copy Bcc"
    ```
 
 2. Run `./nix/update-tbco-nix.sh` to update the tbco-nix pin.
 
-3. Find all instances of `bcc-skeleton` or `bccSkeleton` and replace
+3. Find all instances of `Bcc` or `bccSkeleton` and replace
    them with your project name. Find all instances of `TODO` and
    address them. You can use the following commands to do that:
 
@@ -70,11 +70,11 @@ Hydra and Buildkite, using the `tbco-nix` library.
    This will build all attributes of `default.nix`.
 
 2. Test the Hydra jobset. You can't simply build everything, because some of
-   these jobs will be for other platforms. Replace `bcc-skeleton` with your
+   these jobs will be for other platforms. Replace `Bcc` with your
    project's name in this command:
 
    ```
-   nix-build release.nix -A native.bcc-skeleton.x86_64-linux
+   nix-build release.nix -A native.Bcc.x86_64-linux
    ```
 
 3. Test Buildkite. Unfortunately, there is no easy way to test a Buildkite
